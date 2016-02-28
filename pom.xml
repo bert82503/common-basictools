@@ -1,0 +1,173 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.common</groupId>
+    <artifactId>basictools</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>common-basictools: Common Basic Tools Libraries for Java</name>
+    <description>Java 常用基础工具库，Common Basic Tools Libraries for Java。</description>
+    <url>https://github.com/EdwardLee03/common-basictools</url>
+
+    <properties>
+        <jdk.version>1.7</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+    </dependencies>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/EdwardLee03/common-basictools/issues</url>
+    </issueManagement>
+
+    <inceptionYear>2016</inceptionYear>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/EdwardLee03/common-basictools.git</connection>
+        <developerConnection>scm:git:git@github.com:EdwardLee03/common-basictools.git</developerConnection>
+        <url>https://github.com/EdwardLee03/common-basictools</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>EdwardLee03</id>
+            <name>Edward Lee</name>
+            <email>bert825_work@163.com</email>
+            <organization>non</organization>
+            <organizationUrl>https://github.com/EdwardLee03</organizationUrl>
+            <roles>
+                <role>owner</role>
+                <role>developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <build>
+        <!-- InfoQ Maven专栏（三）——多模块项目的POM重构 -->
+        <!-- 消除多模块插件配置重复 -->
+        <plugins>
+            <!-- FAQ - How do I set up Maven so it will compile with a target and source JVM of my choice? -->
+            <!-- 配置JDK编译版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- XML、properties文件都是资源文件，编码的时候遇到中文总要进行转码！用什么编码？UTF-8 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- [单元、集成]测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <!-- Running Tests in Parallel -->
+                    <parallel>methods</parallel>
+                    <threadCount>8</threadCount>
+                    <!-- Examples - Using TestNG -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+            <!-- Cookbook: How to attach source and javadoc artifacts? - https://maven.apache.org/plugin-developers/cookbook/attach-source-javadoc-artifacts.html -->
+            <!-- 生成源码包和API文档包的命令：mvn clean package source:jar javadoc:jar -Dmaven.test.skip=true -->
+            <!-- 生成源码包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <!-- Usage - Installing the sources using a phase binding -->
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 生成API文档包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>aggregate</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 生成项目站点 -->
+            <!-- FAQ - Handle special characters in site -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.4</version>
+                <configuration>
+                    <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                    <locales>cn,en</locales>
+                </configuration>
+            </plugin>
+            <!-- 部署项目jar包到远程中央仓库 -->
+            <!-- Deploy sources and javadoc jars - https://maven.apache.org/plugins/maven-deploy-plugin/examples/deploying-sources-javadoc.html -->
+            <!-- Maven Deploy Plugin > Usage - https://maven.apache.org/plugins/maven-deploy-plugin/usage.html -->
+            <!-- deploy:deploy-file - https://maven.apache.org/plugins/maven-deploy-plugin/deploy-file-mojo.html -->
+            <!-- 部署源码包和API文档包到远程中央仓库的命令：
+                mvn deploy:deploy-file -Durl=http://maven.mogujie.org/nexus/content/repositories/snapshots \
+                                       -DrepositoryId=snapshots \
+                                       -DpomFile=pom.xml \
+                                       -Dfile=target/ferrari-api-1.0-SNAPSHOT.jar \
+                                       -Dsources=target/ferrari-api-1.0-SNAPSHOT-sources.jar \
+                                       -Djavadoc=target/ferrari-api-1.0-SNAPSHOT-javadoc.jar
+             -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+        </plugins>
+
+        <!-- Maven Resources Plugin - Filtering - http://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering><!-- 启用过滤功能 -->
+            </resource>
+        </resources>
+    </build>
+</project>
