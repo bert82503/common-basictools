@@ -13,6 +13,9 @@
     <url>https://github.com/EdwardLee03/common-basictools</url>
 
     <properties>
+        <!-- Common -->
+        <guava.version>19.0</guava.version>
+
         <!-- Date（日期时间） -->
         <joda-time.version>2.9.2</joda-time.version>
 
@@ -26,6 +29,13 @@
     </properties>
 
     <dependencies>
+        <!-- ============ Common ============ -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
         <!-- ============ Date（日期时间） ============ -->
         <dependency>
             <groupId>joda-time</groupId>
