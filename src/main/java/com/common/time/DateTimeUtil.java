@@ -12,7 +12,9 @@ import java.util.concurrent.TimeUnit;
  * @author xingle
  * @since 1.0
  */
-public abstract class DateTimeUtil {
+public final class DateTimeUtil {
+
+    private DateTimeUtil() {}
 
     /**
      * 一天有多少秒

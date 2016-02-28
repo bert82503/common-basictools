@@ -8,7 +8,9 @@ import java.util.Comparator;
  * @author xingle
  * @since 1.0
  */
-public abstract class Comparators {
+public final class Comparators {
+
+    private Comparators() {}
 
     /**
      * 返回“整数”的升序比较器。
