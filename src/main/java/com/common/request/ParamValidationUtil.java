@@ -6,9 +6,7 @@ package com.common.request;
  * @author xingle
  * @since 1.0
  */
-public final class ParamUtil {
-
-    private ParamUtil() {}
+public abstract class ParamValidationUtil {
 
     public static boolean isNotValidId(long id) {
         return id <= 0L;

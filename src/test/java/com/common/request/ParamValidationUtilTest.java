@@ -6,16 +6,16 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Test for {@link ParamUtil}.
+ * Test for {@link ParamValidationUtil}.
  *
  * @author xingle
  * @since 1.0
  */
-public class ParamUtilTest {
+public class ParamValidationUtilTest {
 
     @Test(dataProvider = "isNotValidIdTestData")
     public void isNotValidId(long id, boolean expected) {
-        boolean actual = ParamUtil.isNotValidId(id);
+        boolean actual = ParamValidationUtil.isNotValidId(id);
         assertThat(actual).isEqualTo(expected);
     }
 
