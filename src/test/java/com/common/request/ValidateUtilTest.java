@@ -6,21 +6,21 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Test for {@link ParamValidationUtil}.
+ * Unit test for {@link ValidateUtil}.
  *
  * @author xingle
  * @since 1.0
  */
-public class ParamValidationUtilTest {
+public class ValidateUtilTest {
 
-    @Test(dataProvider = "isNotValidIdTestData")
-    public void isNotValidId(long id, boolean expected) {
-        boolean actual = ParamValidationUtil.isNotValidId(id);
+    @Test(dataProvider = "isNotPositiveTestData")
+    public void isNotPositive(Long value, boolean expected) {
+        boolean actual = ValidateUtil.isNotPositive(value);
         assertThat(actual).isEqualTo(expected);
     }
 
-    @DataProvider(name = "isNotValidIdTestData")
-    public static Object[][] isNotValidIdTestData() {
+    @DataProvider(name = "isNotPositiveTestData")
+    public static Object[][] isNotPositiveTestData() {
         return new Object[][] {
                 { Long.MIN_VALUE, true }, // 临界值
                 { -23L, true },

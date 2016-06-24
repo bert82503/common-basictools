@@ -11,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Test for {@link Comparators}.
+ * Unit test for {@link Comparators}.
  *
  * @author xingle
  * @since 1.0

@@ -7,12 +7,12 @@ import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 日期、时间工具辅助类。
+ * 时间工具辅助类。
  *
  * @author xingle
  * @since 1.0
  */
-public abstract class DateTimeUtil {
+public abstract class TimeUtil {
 
     /**
      * 一天有多少秒
@@ -35,19 +35,44 @@ public abstract class DateTimeUtil {
             DateTimeFormat.forPattern("HH:mm");
 
     /**
-     * 转换“时间”到“那天的零点时刻”。
+     * 转换“时间”到“那天当日的零点时刻”。
      *
      * @param timeSeconds 时间
-     * @return 那天的零点时刻
+     * @return 那天当日的零点时刻
      */
     public static int toZeroTimeSecondsOfToday(int timeSeconds) {
         final Calendar calendar = Calendar.getInstance();
         long timeMillis = TimeUnit.SECONDS.toMillis(timeSeconds);
         calendar.setTimeInMillis(timeMillis);
+
+        // 设置 小时、分钟、秒、毫秒 都为 0
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
+
+        return (int) (TimeUnit.MILLISECONDS.toSeconds(calendar.getTimeInMillis()));
+    }
+
+    /**
+     * 转换“时间”到“那天明日的零点时刻”。
+     *
+     * @param timeSeconds 时间
+     * @return 那天明日的零点时刻
+     */
+    public static int toZeroTimeSecondsOfTomorrow(int timeSeconds) {
+        final Calendar calendar = Calendar.getInstance();
+        long timeMillis = TimeUnit.SECONDS.toMillis(timeSeconds);
+        calendar.setTimeInMillis(timeMillis);
+
+        // 设置 小时、分钟、秒、毫秒 都为 0
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        // 增加 1 天
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 1);
+
         return (int) (TimeUnit.MILLISECONDS.toSeconds(calendar.getTimeInMillis()));
     }
 

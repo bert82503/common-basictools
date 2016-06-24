@@ -19,6 +19,9 @@
         <!-- Date（日期时间） -->
         <joda-time.version>2.9.2</joda-time.version>
 
+        <!-- Logging（日志记录） -->
+        <logback.version>1.1.5</logback.version>
+
         <!-- Test（测试） -->
         <testng.version>6.9.9</testng.version>
         <assertj.version>2.3.0</assertj.version>
@@ -42,6 +45,24 @@
             <artifactId>joda-time</artifactId>
             <version>${joda-time.version}</version>
         </dependency>
+
+        <!-- ============ Logging（日志记录） ============ -->
+        <!-- Logback - http://logback.qos.ch/ -->
+        <!-- Documentation - http://logback.qos.ch/documentation.html -->
+        <!-- Reasons to prefer logback over log4j - http://logback.qos.ch/reasonsToSwitch.html -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!-- SLF4J: Simple Logging Facade for Java - http://www.slf4j.org/ -->
+        <!-- User Manual - http://www.slf4j.org/manual.html -->
+        <!-- Documentation - http://www.slf4j.org/docs.html -->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--<version>${slf4j.version}</version>-->
+        <!--</dependency>-->
 
         <!-- ============ Test（测试） ============ -->
         <!-- TestNG - http://testng.org/doc/index.html -->

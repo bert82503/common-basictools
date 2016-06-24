@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Test for {@link DateTimeUtil}.
+ * Unit test for {@link TimeUtil}.
  *
  * @author xingle
  * @since 1.0
  */
-public class DateTimeUtilTest {
+public class TimeUtilTest {
 
     @Test(dataProvider = "constantValueTestData")
     public void constantValue(int constant, int expected) {
@@ -25,12 +25,13 @@ public class DateTimeUtilTest {
     @DataProvider(name = "constantValueTestData")
     public static Object[][] constantValueTestData() {
         return new Object[][] {
-                { DateTimeUtil.ONE_DAY_SECONDS, 86400 },
+                { TimeUtil.ONE_DAY_SECONDS, 86400 },
         };
     }
 
+
     /**
-     * 请参考 {@link DateTimeUtil#currentTimeSeconds()}
+     * 请参考 {@link TimeUtil#currentTimeSeconds()}
      */
     @Test(dataProvider = "currentTimeSecondsTestData")
     public void currentTimeSeconds(long currentTimeMillis, int expectedCurrentTimeSeconds) {
@@ -47,13 +48,17 @@ public class DateTimeUtilTest {
         };
     }
 
+
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
             DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 
     @Test(dataProvider = "toZeroTimeSecondsOfTodayTestData")
     public void toZeroTimeSecondsOfToday(int timeSeconds, String expected) {
-        int zeroTimeSecondsOfToday = DateTimeUtil.toZeroTimeSecondsOfToday(
+        int zeroTimeSecondsOfToday = TimeUtil.toZeroTimeSecondsOfToday(
                 timeSeconds);
+        // 时间肯定大于或等于当日零点时刻
+        assertThat(timeSeconds).isGreaterThanOrEqualTo(zeroTimeSecondsOfToday);
+
         long zeroTimeMillisOfToday = TimeUnit.SECONDS.toMillis(
                 zeroTimeSecondsOfToday);
         String actual = DATE_TIME_FORMATTER.print(zeroTimeMillisOfToday);
@@ -65,13 +70,43 @@ public class DateTimeUtilTest {
         return new Object[][] {
                 { 1456366664, "2016-02-25 00:00:00" }, // 2016-02-25 10:17:44
                 { 1456668046, "2016-02-28 00:00:00" }, // 2016-02-28 22:00:46
+
+                { 1457097294, "2016-03-04 00:00:00" }, // 2016-03-04 21:14:54
+                // 边界
+                { 1457020800, "2016-03-04 00:00:00" }, // 2016-03-04 00:00:00
+                { 1457020799, "2016-03-03 00:00:00" }, // 2016-03-03 59:59:59
         };
     }
+
+
+    @Test(dataProvider = "toZeroTimeSecondsOfTomorrowTestData")
+    public void toZeroTimeSecondsOfTomorrow(int timeSeconds, String expected) {
+        int zeroTimeSecondsOfTomorrow = TimeUtil.toZeroTimeSecondsOfTomorrow(
+                timeSeconds);
+        // 时间肯定小于或等于明日零点时刻
+        assertThat(timeSeconds).isLessThanOrEqualTo(zeroTimeSecondsOfTomorrow);
+
+        long zeroTimeMillisOfTomorrow = TimeUnit.SECONDS.toMillis(
+                zeroTimeSecondsOfTomorrow);
+        String actual = DATE_TIME_FORMATTER.print(zeroTimeMillisOfTomorrow);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @DataProvider(name = "toZeroTimeSecondsOfTomorrowTestData")
+    public static Object[][] toZeroTimeSecondsOfTomorrowTestData() {
+        return new Object[][] {
+                { 1457097294, "2016-03-05 00:00:00" }, // 2016-03-04 21:14:54
+                // 边界
+                { 1457107199, "2016-03-05 00:00:00" }, // 2016-03-04 59:59:59
+                { 1457107200, "2016-03-06 00:00:00" }, // 2016-03-05 00:00:00
+        };
+    }
+
 
     @Test(dataProvider = "toTimeTextTestData")
     public void toTimeText(int displayTimeSeconds, int currentTimeSeconds,
                            String expectedTimeText) {
-        String displayTimeText = DateTimeUtil.toTimeText(
+        String displayTimeText = TimeUtil.toTimeText(
                 displayTimeSeconds, currentTimeSeconds);
         assertThat(displayTimeText).isEqualTo(expectedTimeText);
     }

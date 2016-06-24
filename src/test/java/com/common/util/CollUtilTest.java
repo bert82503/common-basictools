@@ -16,16 +16,16 @@ import java.util.TreeSet;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Test for {@link CollectionUtil}.
+ * Unit test for {@link CollUtil}.
  *
  * @author xingle
  * @since 1.0
  */
-public class CollectionUtilTest {
+public class CollUtilTest {
 
     @Test(dataProvider = "isEmptyTestData")
     public <E> void isEmpty(Collection<E> collection, boolean expected) {
-        boolean actual = CollectionUtil.isEmpty(collection);
+        boolean actual = CollUtil.isEmpty(collection);
         assertThat(actual).isEqualTo(expected);
     }
 
