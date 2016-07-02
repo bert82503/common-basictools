@@ -25,7 +25,7 @@ public class TimeUtilTest {
     @DataProvider(name = "constantValueTestData")
     public static Object[][] constantValueTestData() {
         return new Object[][] {
-                { TimeUtil.ONE_DAY_SECONDS, 86400 },
+                { TimeUtil.SECONDS_PER_DAY, 86400 },
         };
     }
 
@@ -56,9 +56,6 @@ public class TimeUtilTest {
     public void toZeroTimeSecondsOfToday(int timeSeconds, String expected) {
         int zeroTimeSecondsOfToday = TimeUtil.toZeroTimeSecondsOfToday(
                 timeSeconds);
-        // 时间肯定大于或等于当日零点时刻
-        assertThat(timeSeconds).isGreaterThanOrEqualTo(zeroTimeSecondsOfToday);
-
         long zeroTimeMillisOfToday = TimeUnit.SECONDS.toMillis(
                 zeroTimeSecondsOfToday);
         String actual = DATE_TIME_FORMATTER.print(zeroTimeMillisOfToday);
@@ -83,9 +80,6 @@ public class TimeUtilTest {
     public void toZeroTimeSecondsOfTomorrow(int timeSeconds, String expected) {
         int zeroTimeSecondsOfTomorrow = TimeUtil.toZeroTimeSecondsOfTomorrow(
                 timeSeconds);
-        // 时间肯定小于或等于明日零点时刻
-        assertThat(timeSeconds).isLessThanOrEqualTo(zeroTimeSecondsOfTomorrow);
-
         long zeroTimeMillisOfTomorrow = TimeUnit.SECONDS.toMillis(
                 zeroTimeSecondsOfTomorrow);
         String actual = DATE_TIME_FORMATTER.print(zeroTimeMillisOfTomorrow);

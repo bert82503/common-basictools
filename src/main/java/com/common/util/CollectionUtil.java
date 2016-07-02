@@ -12,10 +12,12 @@ import java.util.Collection;
  * @author Juergen Hoeller
  * @author Rob Harrop
  * @author Arjen Poutsma
- * @see
+ * @see org.apache.commons.collections4.CollectionUtils
  * @since 1.0
  */
-public abstract class CollUtil {
+public final class CollectionUtil {
+    private CollectionUtil() {
+    }
 
     //-----------------------------------------------------------------------
 

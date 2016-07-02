@@ -9,16 +9,21 @@ import java.util.Map;
  * Mainly for internal use within the framework.
  *
  * @author xingle
+ * @see org.apache.commons.collections4.MapUtils
  * @since 2016年06月24日 14:11
  */
-public abstract class MapUtil {
+public final class MapUtil {
+    private MapUtil() {
+    }
+
+    //-----------------------------------------------------------------------
 
     /**
      * Return {@code true} if the supplied Map is {@code null} or empty.
      * Otherwise, return {@code false}.
      * <p/>
      * Null-safe check if the specified Map is empty.
-     * <p>
+     * <p/>
      * Null returns true.
      *
      * @param map the Map to check, may be null

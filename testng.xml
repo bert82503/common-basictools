@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
 
-<suite name="common-basictools" verbose="1">
-	<test name="testng">
+<suite name="common-basictools" verbose="1" parallel="methods" thread-count="10">
+	<test name="unit-test">
+        <classes>
+            <class name="com.common.cache.LocalCacheFactoryTest"/>
+        </classes>
 	</test>
 </suite>

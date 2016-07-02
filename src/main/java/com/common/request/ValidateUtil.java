@@ -1,19 +1,22 @@
 package com.common.request;
 
 /**
- * 参数有效性校验工具辅助类。
+ * 数值有效性校验工具辅助类。
  *
  * @author xingle
+ * @see org.apache.commons.lang3.Validate
  * @since 1.0
  */
-public abstract class ValidateUtil {
+public final class ValidateUtil {
+    private ValidateUtil() {
+    }
 
     /**
      * Return {@code true} if the supplied Long is {@code null} or less than 0.
      * Otherwise, return {@code false}.
-     * <p>
+     * <p/>
      * Null-safe check if the specified Long is empty.
-     * <p>
+     * <p/>
      * Null returns true.
      *
      * @param value the Long to check, may be null
