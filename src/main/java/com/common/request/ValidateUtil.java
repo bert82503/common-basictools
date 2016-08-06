@@ -4,6 +4,8 @@ package com.common.request;
  * 数值有效性校验工具辅助类。
  *
  * @author xingle
+ * @see java.util.Objects
+ * @see com.google.common.base.Preconditions
  * @see org.apache.commons.lang3.Validate
  * @since 1.0
  */
