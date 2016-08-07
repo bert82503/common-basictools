@@ -29,8 +29,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p/>
  * 经验：
  * <ul>
- * <li>注意：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)</li>
  * <li>maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定</li>
+ * <li>注意：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)</li>
  * <li>refreshAfterWrite 一般以分钟为单位，保证数据能准实时刷新</li>
  * <li>expireAfterWrite 一般以天为单位，数值要比 refreshAfterWrite 大很多，让老数据自动过期失效</li>
  * <li>expireAfterAccess 设置过长的话，频繁被访问的数据会一直有效</li>
@@ -102,15 +102,15 @@ public class LocalCacheFactoryTest {
         loadingCache.getUnchecked("");
     }
 
-    @Test(description = "定期同步刷新则调用 reload，过期失效而重新加载则调用 load")
+    @Test(description = "定期异步刷新则调用 reload，过期失效而重新加载则调用 load")
     public void newLoadingCache_String() throws ExecutionException {
         /**
          * 配置的具体数值根据业务特性来决定
          * @see com.google.common.cache.CacheBuilder
          */
         String spec = Joiner.on(',').join(Arrays.asList(
-                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 // 经验：maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定
+                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 "maximumSize=256", // 容量最大大小
                 "initialCapacity=16", // 初始容量
                 "concurrencyLevel=16", // 并发级别
@@ -134,15 +134,15 @@ public class LocalCacheFactoryTest {
             Executors.newFixedThreadPool(
                     2, new ThreadFactoryBuilder().setNameFormat("local-cache-test-%d").build());
 
-    @Test(description = "定期同步刷新则调用 reload，过期失效而重新加载则调用 load")
+    @Test(description = "定期异步刷新则调用 reload，过期失效而重新加载则调用 load")
     public void newLoadingCache_String_ExecutorService() throws ExecutionException {
         /**
          * 配置的具体数值根据业务特性来决定
          * @see com.google.common.cache.CacheBuilder
          */
         String spec = Joiner.on(',').join(Arrays.asList(
-                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 // 经验：maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定
+                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 "maximumSize=256", // 容量最大大小
                 "initialCapacity=16", // 初始容量
                 "concurrencyLevel=16", // 并发级别
@@ -159,15 +159,15 @@ public class LocalCacheFactoryTest {
         internalTest(loadingCache);
     }
 
-    @Test(description = "定期同步刷新则调用 reload，过期失效而重新加载则调用 load")
+    @Test(description = "定期异步刷新则调用 reload，过期失效而重新加载则调用 load")
     public void newLoadingCache_CacheBuilderSpec() throws ExecutionException {
         /**
          * 配置的具体数值根据业务特性来决定
          * @see com.google.common.cache.CacheBuilder
          */
         String spec = Joiner.on(',').join(Arrays.asList(
-                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 // 经验：maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定
+                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 "maximumSize=256", // 容量最大大小
                 "initialCapacity=16", // 初始容量
                 "concurrencyLevel=16", // 并发级别
@@ -185,15 +185,15 @@ public class LocalCacheFactoryTest {
         internalTest(loadingCache);
     }
 
-    @Test(description = "定期同步刷新则调用 reload，过期失效而重新加载则调用 load")
+    @Test(description = "定期异步刷新则调用 reload，过期失效而重新加载则调用 load")
     public void newLoadingCache_CacheBuilderSpec_ExecutorService() throws ExecutionException {
         /**
          * 配置的具体数值根据业务特性来决定
          * @see com.google.common.cache.CacheBuilder
          */
         String spec = Joiner.on(',').join(Arrays.asList(
-                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 // 经验：maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定
+                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 "maximumSize=256", // 容量最大大小
                 "initialCapacity=16", // 初始容量
                 "concurrencyLevel=16", // 并发级别
@@ -211,15 +211,15 @@ public class LocalCacheFactoryTest {
         internalTest(loadingCache);
     }
 
-    @Test(description = "定期同步刷新则调用 reload，过期失效而重新加载则调用 load")
+    @Test(description = "定期异步刷新则调用 reload，过期失效而重新加载则调用 load")
     public void newLoadingCache_CacheBuilder() throws ExecutionException {
         /**
          * 配置的具体数值根据业务特性来决定
          * @see com.google.common.cache.CacheBuilder
          */
         String spec = Joiner.on(',').join(Arrays.asList(
-                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 // 经验：maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定
+                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 "maximumSize=256", // 容量最大大小
                 "initialCapacity=16", // 初始容量
                 "concurrencyLevel=16", // 并发级别
@@ -237,15 +237,15 @@ public class LocalCacheFactoryTest {
         internalTest(loadingCache);
     }
 
-    @Test(description = "定期同步刷新则调用 reload，过期失效而重新加载则调用 load")
+    @Test(description = "定期异步刷新则调用 reload，过期失效而重新加载则调用 load")
     public void newLoadingCache_CacheBuilder_ExecutorService() throws ExecutionException {
         /**
          * 配置的具体数值根据业务特性来决定
          * @see com.google.common.cache.CacheBuilder
          */
         String spec = Joiner.on(',').join(Arrays.asList(
-                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 // 经验：maximumSize、initialCapacity、concurrencyLevel 的值根据具体的业务场景而定
+                // 经验：maximumSize 必须要显示设置，防止内存被撑爆！(容错机制)
                 "maximumSize=256", // 容量最大大小
                 "initialCapacity=16", // 初始容量
                 "concurrencyLevel=16", // 并发级别
@@ -278,7 +278,7 @@ public class LocalCacheFactoryTest {
         assertThat(stats.missCount()).isEqualTo(2L);
         assertThat(stats.loadSuccessCount()).isEqualTo(2L);
 
-        // 定期同步刷新则调用 reload
+        // 定期异步刷新则调用 reload
         try {
             TimeUnit.SECONDS.sleep(3L);
         } catch (InterruptedException e) {

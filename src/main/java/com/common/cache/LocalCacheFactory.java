@@ -61,14 +61,14 @@ public final class LocalCacheFactory {
     /**
      * 创建一个新的可自动加载异步刷新的缓存实例。
      * <p/>
-     * <p>使用场景：非核心业务。核心业务建议使用“单独的任务执行服务”，使用
+     * 使用场景：非核心业务。核心业务建议使用“单独的任务执行服务”，使用
      * {@link #newLoadingCache(String, String, CacheLoader, ExecutorService)}。
      * <p/>
-     * <p><b><font size="7" color="red">
+     * <b><font size="7" color="red">
      * 注意：使用“共享的任务执行服务”来异步地重新加载（reload）缓存数据！
      * </font></b>
      * <p/>
-     * <p>内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
+     * 内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
      *
      * @param serviceName     使用方的服务名称（用于区分日志）
      * @param spec            缓存构建者配置的规格
@@ -91,14 +91,14 @@ public final class LocalCacheFactory {
     /**
      * 创建一个新的可自动加载异步刷新的缓存实例。
      * <p/>
-     * <p>使用场景：核心业务。非核心业务建议使用共享的任务执行服务，使用
+     * 使用场景：核心业务。非核心业务建议使用共享的任务执行服务，使用
      * {@link #newLoadingCache(String, String, CacheLoader)}。
      * <p/>
-     * <p><b><font size="7" color="red">
+     * <b><font size="7" color="red">
      * 注意：每次都新创建一个“单独的任务执行服务”来异步地重新加载（reload）缓存数据！
      * </font></b>
      * <p/>
-     * <p>内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
+     * 内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
      *
      * @param serviceName     使用方的服务名称（用于区分日志）
      * @param spec            缓存构建者配置的规格
@@ -124,14 +124,14 @@ public final class LocalCacheFactory {
     /**
      * 创建一个新的可自动加载异步刷新的缓存实例。
      * <p/>
-     * <p>使用场景：非核心业务。核心业务建议使用“单独的任务执行服务”，使用
+     * 使用场景：非核心业务。核心业务建议使用“单独的任务执行服务”，使用
      * {@link #newLoadingCache(String, CacheBuilderSpec, CacheLoader, ExecutorService)}。
      * <p/>
-     * <p><b><font size="7" color="red">
+     * <b><font size="7" color="red">
      * 注意：使用“共享的任务执行服务”来异步地重新加载（reload）缓存数据！
      * </font></b>
      * <p/>
-     * <p>内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
+     * 内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
      *
      * @param serviceName     使用方的服务名称（用于区分日志）
      * @param spec            缓存构建者配置的规格
@@ -154,14 +154,14 @@ public final class LocalCacheFactory {
     /**
      * 创建一个新的可自动加载异步刷新的缓存实例。
      * <p/>
-     * <p>使用场景：核心业务。非核心业务建议使用共享的任务执行服务，使用
+     * 使用场景：核心业务。非核心业务建议使用共享的任务执行服务，使用
      * {@link #newLoadingCache(String, CacheBuilderSpec, CacheLoader)}。
      * <p/>
-     * <p><b><font size="7" color="red">
+     * <b><font size="7" color="red">
      * 注意：每次都新创建一个“单独的任务执行服务”来异步地重新加载（reload）缓存数据！
      * </font></b>
      * <p/>
-     * <p>内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
+     * 内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
      *
      * @param serviceName     使用方的服务名称（用于区分日志）
      * @param spec            缓存构建者配置的规格
@@ -187,14 +187,14 @@ public final class LocalCacheFactory {
     /**
      * 创建一个新的可自动加载异步刷新的缓存实例。
      * <p/>
-     * <p>使用场景：非核心业务。核心业务建议使用“单独的任务执行服务”，使用
+     * 使用场景：非核心业务。核心业务建议使用“单独的任务执行服务”，使用
      * {@link #newLoadingCache(String, CacheBuilder, CacheLoader, ExecutorService)}。
      * <p/>
-     * <p><b><font size="7" color="red">
+     * <b><font size="7" color="red">
      * 注意：使用“共享的任务执行服务”来异步地重新加载（reload）缓存数据！
      * </font></b>
      * <p/>
-     * <p>内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
+     * 内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
      *
      * @param serviceName     使用方的服务名称（用于区分日志）
      * @param cacheBuilder    缓存构建者
@@ -217,14 +217,14 @@ public final class LocalCacheFactory {
     /**
      * 创建一个新的可自动加载异步刷新的缓存实例。
      * <p/>
-     * <p>使用场景：核心业务。非核心业务建议使用共享的任务执行服务，使用
+     * 使用场景：核心业务。非核心业务建议使用共享的任务执行服务，使用
      * {@link #newLoadingCache(String, CacheBuilder, CacheLoader)}。
      * <p/>
-     * <p><b><font size="7" color="red">
+     * <b><font size="7" color="red">
      * 注意：每次都新创建一个“单独的任务执行服务”来异步地重新加载（reload）缓存数据！
      * </font></b>
      * <p/>
-     * <p>内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
+     * 内部实现：每隔一分钟定期地记录本地缓存的性能统计信息。
      *
      * @param serviceName     使用方的服务名称（用于区分日志）
      * @param cacheBuilder    缓存构建者
