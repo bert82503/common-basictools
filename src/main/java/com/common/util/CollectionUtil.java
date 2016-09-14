@@ -19,6 +19,8 @@ public final class CollectionUtil {
     private CollectionUtil() {
     }
 
+
+    // Empty checks
     //-----------------------------------------------------------------------
 
     /**

@@ -16,6 +16,8 @@ public final class MapUtil {
     private MapUtil() {
     }
 
+
+    // Empty checks
     //-----------------------------------------------------------------------
 
     /**

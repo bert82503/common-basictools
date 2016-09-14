@@ -20,6 +20,16 @@ public final class TimeUtil {
     }
 
     /**
+     * Number of seconds in a standard day.
+     *
+     * @see org.apache.commons.lang3.time.DateUtils#MILLIS_PER_DAY
+     */
+    public static final int SECONDS_PER_DAY = (int) TimeUnit.DAYS.toSeconds(1L);
+
+
+    // Time
+
+    /**
      * 以秒为单位返回系统的当前时间。
      * 
      * <p>内部使用 {@link System#currentTimeMillis()} 实现。
@@ -68,12 +78,8 @@ public final class TimeUtil {
         return (int) (TimeUnit.MILLISECONDS.toSeconds(calendar.getTimeInMillis()));
     }
 
-    /**
-     * Number of seconds in a standard day.
-     *
-     * @see org.apache.commons.lang3.time.DateUtils#MILLIS_PER_DAY
-     */
-    public static final int SECONDS_PER_DAY = (int) TimeUnit.DAYS.toSeconds(1L);
+
+    // Format
 
     /**
      * "小时:分钟"格式化器

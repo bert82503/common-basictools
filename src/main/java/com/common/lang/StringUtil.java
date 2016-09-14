@@ -1,7 +1,7 @@
 package com.common.lang;
 
 /**
- * Operations on {@link java.lang.String} that are {@code null} safe.
+ * Operations on {@link String} that are {@code null} safe.
  *
  * <p>字符串操作辅助类
  *
