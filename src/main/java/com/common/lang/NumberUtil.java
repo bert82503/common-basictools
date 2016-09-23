@@ -11,6 +11,7 @@ package com.common.lang;
  */
 public final class NumberUtil {
     private NumberUtil() {
+        throw new AssertionError("No com.common.lang.NumberUtil instances for you!");
     }
 
 

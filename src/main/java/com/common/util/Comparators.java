@@ -11,6 +11,7 @@ import java.util.Comparator;
  */
 public final class Comparators {
     private Comparators() {
+        throw new AssertionError("No com.common.util.Comparators instances for you!");
     }
 
     /**

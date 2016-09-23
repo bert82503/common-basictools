@@ -11,6 +11,7 @@ package com.common.lang;
  */
 public final class StringUtil {
     private StringUtil() {
+        throw new AssertionError("No com.common.lang.StringUtil instances for you!");
     }
 
     // Empty checks

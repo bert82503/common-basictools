@@ -11,6 +11,7 @@ package com.common.request;
  */
 public final class ValidateUtil {
     private ValidateUtil() {
+        throw new AssertionError("No com.common.request.ValidateUtil instances for you!");
     }
 
     /**

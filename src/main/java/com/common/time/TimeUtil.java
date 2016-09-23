@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public final class TimeUtil {
     private TimeUtil() {
+        throw new AssertionError("No com.common.time.TimeUtil instances for you!");
     }
 
     /**

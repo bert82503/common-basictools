@@ -17,6 +17,7 @@ import java.util.Collection;
  */
 public final class CollectionUtil {
     private CollectionUtil() {
+        throw new AssertionError("No com.common.util.CollectionUtil instances for you!");
     }
 
 

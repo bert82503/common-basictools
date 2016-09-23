@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public final class MapUtil {
     private MapUtil() {
+        throw new AssertionError("No com.common.util.MapUtil instances for you!");
     }
 
 
