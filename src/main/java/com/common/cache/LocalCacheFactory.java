@@ -53,6 +53,7 @@ public final class LocalCacheFactory {
 
 
     private LocalCacheFactory() {
+        throw new AssertionError("No com.common.cache.LocalCacheFactory instances for you!");
     }
 
 
