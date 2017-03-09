@@ -1,19 +1,19 @@
 package com.common.cache;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheBuilderSpec;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.CacheStats;
 import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 本地缓存工厂辅助类。
@@ -243,7 +243,7 @@ public final class LocalCacheFactory {
         final LoadingCache<K, V> loadingCache = cacheBuilder
                 .recordStats() // 记录缓存性能的累积统计信息
                 .build(
-                        CacheLoader.asyncReloading(syncCacheLoader, executorService) // 封装成异步 reload
+                        CacheLoader.asyncReloading(syncCacheLoader, executorService) // 封装成异步reload
                 );
 
         // 定期地记录本地缓存的统计信息

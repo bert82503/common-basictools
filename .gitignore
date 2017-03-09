@@ -3,6 +3,9 @@
 # TestNG
 test-output/
 
+# Clover
+.clover/
+
 # Gradle
 .gradle/
 
