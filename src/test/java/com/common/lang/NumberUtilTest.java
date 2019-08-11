@@ -8,11 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Unit test of {@link NumberUtil}.
  *
- * @author xingle
- * @since 2016年09月14日 11:36
+ * @since 2016-09-14
  */
 public class NumberUtilTest {
-
     @Test(dataProvider = "intValueTestData")
     public void intValue(Integer value, int expected) {
         int result = NumberUtil.intValue(value, expected);
@@ -50,5 +48,4 @@ public class NumberUtilTest {
                 {Long.MIN_VALUE, Long.MIN_VALUE},
         };
     }
-
 }

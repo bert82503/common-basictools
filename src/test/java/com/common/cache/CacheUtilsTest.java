@@ -9,11 +9,9 @@ import org.testng.annotations.Test;
 /**
  * Unit test of {@link CacheUtils}.
  *
- * @author dannong
- * @since 2017年03月09日 10:45
+ * @since 2017-03-09
  */
 public class CacheUtilsTest {
-
     @Test(dataProvider = "toCacheKeyTestData")
     public void toCacheKey(Object[] keyElements, String expected) {
         String cacheKey = CacheUtils.toCacheKey(keyElements);

@@ -13,11 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Unit test for {@link Comparators}.
  *
- * @author xingle
  * @since 1.0
  */
 public class ComparatorsTest {
-
     @Test(dataProvider = "integerAscendComparatorTestData")
     public void integerAscendComparator(List<Integer> list, List<Integer> expectedList) {
         Collections.sort(list, Comparators.integerAscendComparator());
@@ -38,5 +36,4 @@ public class ComparatorsTest {
                 { Arrays.asList(23, 10, 7, 3), Arrays.asList(3, 7, 10, 23) }, // 极端情况：原始数据就是降序
         };
     }
-
 }

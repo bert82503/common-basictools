@@ -13,11 +13,9 @@ import com.google.common.collect.Maps;
 /**
  * Unit test of {@link MapUtil}.
  *
- * @author xingle
- * @since 2016年06月24日 14:20
+ * @since 2016-06-24
  */
 public class MapUtilTest {
-
     @Test(dataProvider = "isEmptyTestData")
     public void isEmpty(Map<?, ?> map, boolean expected) {
         boolean result = MapUtil.isEmpty(map);

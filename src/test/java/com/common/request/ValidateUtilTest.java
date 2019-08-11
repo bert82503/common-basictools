@@ -8,11 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Unit test for {@link ValidateUtil}.
  *
- * @author xingle
  * @since 1.0
  */
 public class ValidateUtilTest {
-
     @Test(dataProvider = "isNotPositiveTestData")
     public void isNotPositive(Long value, boolean expected) {
         boolean actual = ValidateUtil.isNotPositive(value);
@@ -31,5 +29,4 @@ public class ValidateUtilTest {
                 { Long.MAX_VALUE, false }, // 临界值
         };
     }
-
 }

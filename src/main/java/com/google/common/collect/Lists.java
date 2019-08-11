@@ -1,5 +1,6 @@
 package com.google.common.collect;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.CollectPreconditions.checkNonnegative;
 
 import java.util.ArrayList;
@@ -7,6 +8,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import com.google.common.annotations.GwtCompatible;
+import com.google.common.primitives.Ints;
 
 /**
  * Static utility methods pertaining to {@link List} instances. Also see this
@@ -64,6 +68,38 @@ public final class Lists {
   public static <E> ArrayList<E> newArrayListWithCapacity(int initialArraySize) {
     initialArraySize = checkNonnegative(initialArraySize, "initialArraySize");
     return new ArrayList<>(initialArraySize);
+  }
+
+  /**
+   * Creates a <i>mutable</i> {@code ArrayList} instance containing the given
+   * elements.
+   *
+   * <p><b>Note:</b> essentially the only reason to use this method is when you
+   * will need to add or remove elements later. Otherwise, for non-null elements
+   * use {@link ImmutableList#of()} (for varargs) or {@link
+   * ImmutableList#copyOf(Object[])} (for an array) instead. If any elements
+   * might be null, or you need support for {@link List#set(int, Object)}, use
+   * {@link Arrays#asList}.
+   *
+   * <p>Note that even when you do need the ability to add or remove, this method
+   * provides only a tiny bit of syntactic sugar for {@code newArrayList(}{@link
+   * Arrays#asList asList}{@code (...))}, or for creating an empty list then
+   * calling {@link Collections#addAll}. This method is not actually very useful
+   * and will likely be deprecated in the future.
+   */
+  public static <E> ArrayList<E> newArrayList(E... elements) {
+    checkNotNull(elements);
+    // Avoid integer overflow when a large array is passed in
+    int capacity = computeArrayListCapacity(elements.length);
+    ArrayList<E> list = new ArrayList<E>(capacity);
+    Collections.addAll(list, elements);
+    return list;
+  }
+
+  private static int computeArrayListCapacity(int arraySize) {
+    arraySize = checkNonnegative(arraySize, "arraySize");
+    // TODO(kevinb): Figure out the right behavior, and document it
+    return Ints.saturatedCast(5L + arraySize + (arraySize / 10));
   }
 
   // LinkedList

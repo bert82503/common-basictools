@@ -77,6 +77,25 @@ public final class Sets {
     return new HashSet<>(Maps.capacity(expectedSize));
   }
 
+  /**
+   * Creates a <i>mutable</i> {@code HashSet} instance initially containing the given elements.
+   *
+   * <p><b>Note:</b> if elements are non-null and won't be added or removed after this point, use
+   * {@link ImmutableSet#of()} or {@link ImmutableSet#copyOf(Object[])} instead. If {@code E} is an
+   * {@link Enum} type, use {@link EnumSet#of(Enum, Enum[])} instead. Otherwise, strongly consider
+   * using a {@code LinkedHashSet} instead, at the cost of increased memory footprint, to get
+   * deterministic iteration behavior.
+   *
+   * <p>This method is just a small convenience, either for {@code newHashSet(}{@link Arrays#asList
+   * asList}{@code (...))}, or for creating an empty set then calling {@link Collections#addAll}.
+   * This method is not actually very useful and will likely be deprecated in the future.
+   */
+  public static <E> HashSet<E> newHashSet(E... elements) {
+    HashSet<E> set = newHashSetWithExpectedSize(elements.length);
+    Collections.addAll(set, elements);
+    return set;
+  }
+
   // ConcurrentHashSet
 
   /**

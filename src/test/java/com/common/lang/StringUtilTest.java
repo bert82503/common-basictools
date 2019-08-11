@@ -8,11 +8,9 @@ import org.testng.annotations.Test;
 /**
  * Unit test of {@link StringUtil}.
  *
- * @author xingle
- * @since 2016年06月25日 14:47
+ * @since 2016-06-25
  */
 public class StringUtilTest {
-
     @Test(dataProvider = "isEmptyTestData")
     public void isEmpty(CharSequence cs, boolean expected) {
         boolean result = StringUtil.isEmpty(cs);
@@ -45,6 +43,5 @@ public class StringUtilTest {
                 {"abc", false},
                 {"  alpha  ", false},
         };
-
     }
 }

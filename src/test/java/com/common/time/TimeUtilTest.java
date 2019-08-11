@@ -12,11 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Unit test for {@link TimeUtil}.
  *
- * @author xingle
  * @since 1.0
  */
 public class TimeUtilTest {
-
     @Test(dataProvider = "constantValueTestData")
     public void constantValue(int constant, int expected) {
         assertThat(constant).isEqualTo(expected);
@@ -120,5 +118,4 @@ public class TimeUtilTest {
                 { 1456502399, 1456368124, "明日 23:59" }, // 边界
         };
     }
-
 }

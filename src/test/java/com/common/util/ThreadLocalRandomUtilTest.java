@@ -7,11 +7,9 @@ import static org.assertj.core.api.Assertions.*;
 /**
  * Test of {@link ThreadLocalRandomUtil}.
  *
- * @author dannong
- * @since 2016年11月29日 20:36
+ * @since 2016-11-29
  */
 public class ThreadLocalRandomUtilTest {
-
     @Test
     public void nextInt() {
         int random;
